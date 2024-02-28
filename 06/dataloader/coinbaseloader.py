@@ -2,9 +2,8 @@ import json
 import pandas as pd
 from datetime import datetime
 from pandas.core.api import DataFrame as DataFrame
+from baseloader import BaseDataLoader
 from enum import Enum
-
-from .baseloader import BaseDataLoader
 
 class Granularity(Enum):
     ONE_MINUTE=60,
