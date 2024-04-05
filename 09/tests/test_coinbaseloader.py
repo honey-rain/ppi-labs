@@ -1,7 +1,5 @@
 from dataloader.coinbaseloader import CoinbaseLoader, Granularity
 
-import pandas as pd
-
 class TestClass:
 
     @classmethod
@@ -10,9 +8,12 @@ class TestClass:
 
     def test_get_pairs(self):
         data = self._loader.get_pairs()
+        
         assert data is not None and len(data) != 0, "Empty pairs list received"
         assert isinstance(data, pd.DataFrame), "Pandas DataFrame expected"
-        assert "BTC" in data.base_currency.values, "BTC base currency not found"
+
+        base_currencies = [item["base_currency"] for item in data]
+        assert "BTC" in base_currencies, "BTC base currency not found"
 
     def test_get_stats(self):
         pass
