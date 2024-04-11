@@ -8,7 +8,7 @@ import json
 import logging
 import logging.config
 
-DUMP_JSON=False
+DUMP_JSON=True
 
 def setup_logging(path='logger.yml', level=logging.INFO, env_key='LOG_CONFIG'):
     path = os.getenv(env_key, path)
@@ -36,7 +36,7 @@ def main(log):
 
     stats = loader.get_stats("btc-usdt")
     log.debug("Stats for btc-usdt receievd")
-    dump_json(pairs, "stats.json")
+    dump_json(stats, "stats.json")
     log.debug("Stats for btc-usdt stored")
     data = loader.get_historical_data("btc-usdt", "2023-0101", "2023-06-30", Granularity.ONE_DAY)
     log.debug("Data received")

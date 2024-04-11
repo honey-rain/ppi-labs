@@ -10,7 +10,7 @@ class TestClass:
         data = self._loader.get_pairs()
         
         assert data is not None and len(data) != 0, "Empty pairs list received"
-        assert isinstance(data, pd.DataFrame), "Pandas DataFrame expected"
+        assert isinstance(data, list), "List expected"
 
         base_currencies = [item["base_currency"] for item in data]
         assert "BTC" in base_currencies, "BTC base currency not found"
